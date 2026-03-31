@@ -14,10 +14,14 @@ import {
   Globe,
   Send,
   Download,
-  ChevronRight
+  ChevronRight,
+  Menu,
+  X
 } from 'lucide-react';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { Toaster, toast } from 'sonner';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -410,6 +414,32 @@ function App() {
     return () => ctx.revert();
   }, []);
 
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    
+    // Replace this with your actual Formspree ID (e.g., 'https://formspree.io/f/xbjojpqr')
+    const FORMSPREE_URL = "https://formspree.io/f/mqajajob"; 
+    
+    const promise = fetch(FORMSPREE_URL, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    toast.promise(promise, {
+      loading: 'Sending message...',
+      success: () => {
+        form.reset();
+        return 'Message sent successfully!';
+      },
+      error: 'Failed to send message. Please try again.'
+    });
+  };
+
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
       gsap.to(window, {
@@ -436,10 +466,59 @@ function App() {
           <button onClick={() => scrollToSection(experienceRef)} className="nav-item nav-link">Roles</button>
           <button onClick={() => scrollToSection(aboutRef)} className="nav-item nav-link">Contact</button>
         </div>
+        
+        {/* Mobile menu button */}
+        <button 
+          className="md:hidden text-foreground z-50 p-2"
+          onClick={() => {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+              if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                gsap.fromTo(menu, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+              } else {
+                gsap.to(menu, { 
+                  opacity: 0, 
+                  y: -20, 
+                  duration: 0.3, 
+                  ease: 'power2.in',
+                  onComplete: () => menu.classList.add('hidden')
+                });
+              }
+            }
+          }}
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+
+        {/* Mobile menu overlay */}
+        <div id="mobile-menu" className="hidden fixed inset-0 z-40 bg-background flex flex-col justify-center items-center gap-8 p-6">
+          <button 
+            className="absolute top-6 right-[4vw] p-2"
+            onClick={() => {
+              const menu = document.getElementById('mobile-menu');
+              if (menu) {
+                gsap.to(menu, { 
+                  opacity: 0, 
+                  y: -20, 
+                  duration: 0.3, 
+                  ease: 'power2.in',
+                  onComplete: () => menu.classList.add('hidden')
+                });
+              }
+            }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <button onClick={() => { scrollToSection(projectsRef); document.getElementById('mobile-menu')?.classList.add('hidden'); }} className="text-2xl font-heading font-medium">Work</button>
+          <button onClick={() => { scrollToSection(skillsRef); document.getElementById('mobile-menu')?.classList.add('hidden'); }} className="text-2xl font-heading font-medium">Skills</button>
+          <button onClick={() => { scrollToSection(experienceRef); document.getElementById('mobile-menu')?.classList.add('hidden'); }} className="text-2xl font-heading font-medium">Roles</button>
+          <button onClick={() => { scrollToSection(aboutRef); document.getElementById('mobile-menu')?.classList.add('hidden'); }} className="text-2xl font-heading font-medium">Contact</button>
+        </div>
       </nav>
 
       {/* Section 1: Hero */}
-      <section ref={heroRef} className="section-pinned z-10">
+      <section id="hero" ref={heroRef} className="section-pinned z-10">
         <div className="hero-bg absolute inset-0">
           <img 
             src="/hero-bg.jpg" 
@@ -498,7 +577,7 @@ function App() {
       </section>
 
       {/* Section 2: Projects */}
-      <section ref={projectsRef} className="section-pinned z-20">
+      <section id="work" ref={projectsRef} className="section-pinned z-20">
         <div className="projects-bg absolute inset-0">
           <img 
             src="/projects-bg.jpg" 
@@ -590,7 +669,7 @@ function App() {
       </section>
 
       {/* Section 3: Skills */}
-      <section ref={skillsRef} className="section-pinned z-30">
+      <section id="skills" ref={skillsRef} className="section-pinned z-30">
         <div className="skills-bg absolute inset-0">
           <img 
             src="/skills-bg.jpg" 
@@ -646,7 +725,7 @@ function App() {
       </section>
 
       {/* Section 4: Experience */}
-      <section ref={experienceRef} className="section-flowing z-40 bg-background py-[10vh] px-[6vw]">
+      <section id="experience" ref={experienceRef} className="section-flowing z-40 bg-background py-[10vh] px-[6vw]">
         <div className="max-w-6xl mx-auto">
           <div className="experience-heading mb-16">
             <h2 className="font-heading text-[clamp(32px,4vw,56px)] font-bold text-foreground mb-4">
@@ -749,7 +828,7 @@ function App() {
       </section>
 
       {/* Section 6: About + Contact */}
-      <section ref={aboutRef} className="section-flowing z-40 bg-background-secondary py-[10vh] px-[6vw]">
+      <section id="contact" ref={aboutRef} className="section-flowing z-40 bg-background-secondary py-[10vh] px-[6vw]">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Left: About */}
@@ -809,8 +888,7 @@ function App() {
               <div className="card-border p-8 bg-[rgba(5,6,11,0.6)]">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6">Get in Touch</h3>
                 <form 
-                  action="https://formspree.io/harshithkumarmankala883@gmail.com"
-                  method="POST"
+                  onSubmit={handleContactSubmit}
                   className="space-y-4"
                 >
                   <div>
@@ -850,6 +928,8 @@ function App() {
           </div>
         </div>
       </section>
+
+      <Toaster position="bottom-right" richColors />
 
       {/* Section 7: Footer */}
       <footer ref={footerRef} className="section-flowing z-40 bg-background py-[8vh] px-[6vw]">
