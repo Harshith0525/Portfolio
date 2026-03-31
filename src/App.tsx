@@ -451,13 +451,16 @@ function App() {
         
         <div className="relative z-10 w-full h-full flex flex-col justify-center items-center px-[6vw]">
           {/* Headline */}
-          <div className="headline-container text-center perspective-1000">
-            <h1 className="font-heading font-bold text-[clamp(36px,6vw,84px)] text-foreground leading-[0.95] tracking-[-0.02em]">
-              <span className="headline-word inline-block">COMPUTER</span>{' '}
-              <span className="headline-word inline-block">SCIENCE</span>
-              <br />
-              <span className="headline-word inline-block">UNDERGRADUATE</span>
-            </h1>
+            <div className="headline-container text-center perspective-1000">
+              <p className="headline-word mb-2 font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                HI, I'M MANKALA HARSHITH kumar
+              </p>
+              <h1 className="font-heading font-bold text-[clamp(36px,6vw,84px)] text-foreground leading-[0.95] tracking-[-0.02em]">
+                <span className="headline-word inline-block">COMPUTER</span>{' '}
+                <span className="headline-word inline-block">SCIENCE</span>
+                <br />
+                <span className="headline-word inline-block">UNDERGRADUATE</span>
+              </h1>
             <p className="subheadline mt-6 font-mono text-sm uppercase tracking-[0.12em] text-muted-foreground">
               PROJECTS • SYSTEMS • WEB
             </p>
@@ -806,7 +809,7 @@ function App() {
               <div className="card-border p-8 bg-[rgba(5,6,11,0.6)]">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6">Get in Touch</h3>
                 <form 
-                  action="https://formspree.io/f/xnqevwdr"
+                  action="https://formspree.io/f/harshithkumarmankala883@gmail.com"
                   method="POST"
                   className="space-y-4"
                 >
@@ -882,7 +885,7 @@ function App() {
             </a>
           </div>
           <p className="font-mono text-xs text-[#A7B0C8]">
-            © 2026 Mankala Harshith Kumar
+            © 2026 Mankala Harshith kumar
           </p>
         </div>
       </footer>
