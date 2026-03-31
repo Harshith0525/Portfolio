@@ -419,8 +419,10 @@ function App() {
     const form = e.currentTarget;
     const formData = new FormData(form);
     
-    // Replace this with your actual Formspree ID (e.g., 'https://formspree.io/f/xbjojpqr')
-    const FORMSPREE_URL = "https://formspree.io/f/mqajajob"; 
+    // Replace this with your actual Formspree ID (e.g., 'f/xbjojpqr')
+    // Get yours at https://formspree.io/
+    const FORMSPREE_ID = "mqajajob"; 
+    const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`; 
     
     const promise = fetch(FORMSPREE_URL, {
       method: 'POST',
@@ -428,6 +430,12 @@ function App() {
       headers: {
         'Accept': 'application/json'
       }
+    }).then(async (response) => {
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || 'Failed to send message');
+      }
+      return response.json();
     });
 
     toast.promise(promise, {
@@ -436,7 +444,7 @@ function App() {
         form.reset();
         return 'Message sent successfully!';
       },
-      error: 'Failed to send message. Please try again.'
+      error: (err) => err.message || 'Failed to send message. Please check your Formspree ID.'
     });
   };
 
