@@ -19,7 +19,7 @@ import {
   X
 } from 'lucide-react';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { Toaster, toast } from 'sonner';
+import { Toaster } from 'sonner';
 
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
@@ -413,40 +413,6 @@ function App() {
 
     return () => ctx.revert();
   }, []);
-
-  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    
-    // Replace this with your actual Formspree ID (e.g., 'f/xbjojpqr')
-    // Get yours at https://formspree.io/
-    const FORMSPREE_ID = "mqajajob"; 
-    const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`; 
-    
-    const promise = fetch(FORMSPREE_URL, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(async (response) => {
-      if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Failed to send message');
-      }
-      return response.json();
-    });
-
-    toast.promise(promise, {
-      loading: 'Sending message...',
-      success: () => {
-        form.reset();
-        return 'Message sent successfully!';
-      },
-      error: (err) => err.message || 'Failed to send message. Please check your Formspree ID.'
-    });
-  };
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
@@ -896,7 +862,8 @@ function App() {
               <div className="card-border p-8 bg-[rgba(5,6,11,0.6)]">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6">Get in Touch</h3>
                 <form 
-                  onSubmit={handleContactSubmit}
+                  action="https://formspree.io/harshithkumarmankala883@gmail.com"
+                  method="POST"
                   className="space-y-4"
                 >
                   <div>
