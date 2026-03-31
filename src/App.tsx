@@ -433,7 +433,7 @@ function App() {
         <div className="hidden md:flex items-center gap-8">
           <button onClick={() => scrollToSection(projectsRef)} className="nav-item nav-link">Work</button>
           <button onClick={() => scrollToSection(skillsRef)} className="nav-item nav-link">Skills</button>
-          <button onClick={() => scrollToSection(experienceRef)} className="nav-item nav-link">Experience</button>
+          <button onClick={() => scrollToSection(experienceRef)} className="nav-item nav-link">Roles</button>
           <button onClick={() => scrollToSection(aboutRef)} className="nav-item nav-link">Contact</button>
         </div>
       </nav>
@@ -650,10 +650,10 @@ function App() {
         <div className="max-w-6xl mx-auto">
           <div className="experience-heading mb-16">
             <h2 className="font-heading text-[clamp(32px,4vw,56px)] font-bold text-foreground mb-4">
-              EXPERIENCE
+              ROLES & CONTRIBUTIONS
             </h2>
             <p className="text-[#A7B0C8] max-w-[46vw] text-base leading-relaxed">
-              Hands-on work, academic projects, and hardware-software integration.
+              Academic leadership, technical contributions, and hands-on project management.
             </p>
           </div>
           
