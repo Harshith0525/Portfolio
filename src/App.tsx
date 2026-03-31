@@ -863,7 +863,7 @@ function App() {
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6">Get in Touch</h3>
                 <form 
                   // REPLACE the 'mqajajob' below with your actual Formspree ID
-                  action="https://formspree.io/f/mqajajob"
+                  action="https://formspree.io/f/YOUR_NEW_ID_HERE"
                   method="POST"
                   className="space-y-4"
                 >
