@@ -534,9 +534,8 @@ function App() {
                 <ChevronRight className="w-4 h-4" />
               </button>
               <a 
-                href="https://github.com/Harshith0525" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/Resume.pdf" 
+                download="Resume.pdf"
                 className="font-mono text-xs uppercase tracking-[0.12em] text-[#A7B0C8] hover:text-accent transition-colors flex items-center gap-2"
               >
                 <Download className="w-4 h-4" />
