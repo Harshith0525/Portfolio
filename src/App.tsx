@@ -862,7 +862,8 @@ function App() {
               <div className="card-border p-8 bg-[rgba(5,6,11,0.6)]">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6">Get in Touch</h3>
                 <form 
-                  action="https://formspree.io/harshithkumarmankala883@gmail.com"
+                  // REPLACE the 'mqajajob' below with your actual Formspree ID
+                  action="https://formspree.io/f/mqajajob"
                   method="POST"
                   className="space-y-4"
                 >
