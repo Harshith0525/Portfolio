@@ -452,15 +452,15 @@ function App() {
         <div className="relative z-10 w-full h-full flex flex-col justify-center items-center px-[6vw]">
           {/* Headline */}
             <div className="headline-container text-center perspective-1000">
-              <p className="headline-word mb-2 font-mono text-xs uppercase tracking-[0.2em] text-accent">
-                HI, I'M MANKALA HARSHITH kumar
-              </p>
-              <h1 className="font-heading font-bold text-[clamp(36px,6vw,84px)] text-foreground leading-[0.95] tracking-[-0.02em]">
-                <span className="headline-word inline-block">COMPUTER</span>{' '}
-                <span className="headline-word inline-block">SCIENCE</span>
-                <br />
-                <span className="headline-word inline-block">UNDERGRADUATE</span>
+              <h1 className="font-heading font-bold text-[clamp(44px,8vw,92px)] text-foreground leading-[0.9] tracking-[-0.03em] mb-6">
+                <span className="headline-word inline-block">MANKALA</span><br />
+                <span className="headline-word inline-block text-accent">HARSHITH</span> <span className="headline-word inline-block">kumar</span>
               </h1>
+              <p className="subheadline font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-center gap-3">
+                <span className="accent-line w-8 h-[1px] bg-accent" />
+                COMPUTER SCIENCE UNDERGRADUATE
+                <span className="accent-line w-8 h-[1px] bg-accent" />
+              </p>
             <p className="subheadline mt-6 font-mono text-sm uppercase tracking-[0.12em] text-muted-foreground">
               PROJECTS • SYSTEMS • WEB
             </p>
@@ -518,7 +518,7 @@ function App() {
           <div className="flex-1 flex flex-col md:flex-row gap-8 items-center justify-center">
             {/* Project A */}
             <a 
-              href="https://github.com/Harshith0525/Online-Blood-Donation-System"
+              href="https://github.com/Harshith0525/Online-Blood-Donation-Management-System"
               target="_blank"
               rel="noopener noreferrer"
               className="project-card-left w-full md:w-[38vw] card-border p-8 bg-[rgba(5,6,11,0.6)] backdrop-blur-sm block hover:bg-[rgba(11,14,26,0.8)] transition-colors cursor-pointer group"
@@ -809,7 +809,7 @@ function App() {
               <div className="card-border p-8 bg-[rgba(5,6,11,0.6)]">
                 <h3 className="font-heading text-xl font-semibold text-foreground mb-6">Get in Touch</h3>
                 <form 
-                  action="https://formspree.io/f/harshithkumarmankala883@gmail.com"
+                  action="https://formspree.io/harshithkumarmankala883@gmail.com"
                   method="POST"
                   className="space-y-4"
                 >
