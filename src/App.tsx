@@ -541,7 +541,7 @@ function App() {
             <div className="headline-container text-center perspective-1000">
               <h1 className="font-heading font-bold text-[clamp(44px,8vw,92px)] text-foreground leading-[0.9] tracking-[-0.03em] mb-6">
                 <span className="headline-word inline-block">MANKALA</span><br />
-                <span className="headline-word inline-block text-accent">HARSHITH</span> <span className="headline-word inline-block">kumar</span>
+                <span className="headline-word inline-block text-accent">HARSHITH</span> <span className="headline-word inline-block">KUMAR</span>
               </h1>
               <p className="subheadline font-mono text-sm uppercase tracking-[0.2em] text-muted-foreground flex items-center justify-center gap-3">
                 <span className="accent-line w-8 h-[1px] bg-accent" />
@@ -973,7 +973,7 @@ function App() {
             </a>
           </div>
           <p className="font-mono text-xs text-[#A7B0C8]">
-            © 2026 Mankala Harshith kumar
+            © 2026 Mankala Harshith KUMAR
           </p>
         </div>
       </footer>
